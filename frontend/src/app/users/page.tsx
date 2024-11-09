@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 export default function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState('');
   const [isConfirming, setIsConfirming] = useState(false);
 
   useEffect(() => {
-    fetchUsers(); // コンポーネントがマウントされたときにユーザーを取得
+    fetchUsers(); // Fetch users when the component mounts
   }, []);
 
   const fetchUsers = async () => {
@@ -35,14 +36,15 @@ export default function Register() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, email, password }),
       });
 
       if (response.ok) {
         setMessage('User registered successfully');
         setUsername('');
+        setEmail('');
         setPassword('');
-        fetchUsers(); // 新しいユーザーが登録された後、ユーザーリストを再取得
+        fetchUsers(); // Refresh the user list after a new user registers
       } else {
         setMessage('Failed to register user');
       }
@@ -50,7 +52,7 @@ export default function Register() {
       console.error('Error:', error);
       setMessage('Error occurred during registration');
     }
-    setIsConfirming(false); // モーダルを閉じる
+    setIsConfirming(false); // Close the confirmation modal
   };
 
   const handleConfirm = (e) => {
@@ -78,6 +80,16 @@ export default function Register() {
             />
           </div>
           <div>
+            <label className="block text-gray-700">Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
             <label className="block text-gray-700">Password:</label>
             <input
               type="password"
@@ -97,13 +109,16 @@ export default function Register() {
         {message && <p className="mt-4 text-center text-green-500">{message}</p>}
       </div>
 
-      {/* 確認モーダル */}
+      {/* Confirmation Modal */}
       {isConfirming && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
             <h2 className="text-xl font-bold mb-4">Confirm Registration</h2>
             <p className="mb-2">
               <span className="font-semibold">Username:</span> {username}
+            </p>
+            <p className="mb-2">
+              <span className="font-semibold">Email:</span> {email}
             </p>
             <p className="mb-4">
               <span className="font-semibold">Password:</span> {password.replace(/./g, '*')}
@@ -124,7 +139,7 @@ export default function Register() {
         </div>
       )}
 
-      {/* 登録済みユーザーの表示 */}
+      {/* Registered Users */}
       <div className="bg-white p-6 rounded-lg shadow-lg w-80 mt-6">
         <h2 className="text-xl font-bold mb-4 text-center">Registered Users</h2>
         {error && <p className="text-red-500">{error}</p>}

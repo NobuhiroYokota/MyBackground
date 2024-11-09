@@ -1,18 +1,25 @@
 import { Body, Controller, Post, Get } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { User } from '@prisma/client';
+import { UserService } from './users.service';
 
 @Controller('users')
 export class UsersController {
-  private users = [];
+  constructor(private readonly userService: UserService) {}
+  // @Post()
+  // create(@Body() createUser: CreateUserDto) {
+  //   this.users.push(createUser); // ユーザーを登録
+  //   return createUser;
+  // }
 
   @Post()
-  create(@Body() createUser: CreateUserDto) {
-    this.users.push(createUser); // ユーザーを登録
-    return createUser;
+  async signupUser(
+    @Body() userData: { username: string; email: string; password: string },
+  ): Promise<User> {
+    return this.userService.createUser(userData);
   }
 
   @Get()
-  findAll() {
-    return this.users; // 全てのユーザーを返す
+  async findAll(): Promise<User[]> {
+    return this.userService.findAllUsers(); // Assuming findAllUsers method exists in UserService
   }
 }
