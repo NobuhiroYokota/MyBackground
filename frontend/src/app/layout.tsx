@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next"
+import { FormProvider } from '../lib/FormProvider';
 import "./globals.css";
 
 
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <FormProvider>
+          {children}
+        </FormProvider>
       </body>
     </html>
   );
