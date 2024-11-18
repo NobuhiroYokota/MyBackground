@@ -52,10 +52,16 @@ export default function Output() {
 
   const handleSaveImage = () => {
     const canvas = canvasRef.current;
-    const link = document.createElement("a");
-    link.href = canvas.toDataURL("image/png");
-    link.download = "template.png";
-    link.click();
+    
+    canvas.toBlob((blob) => {
+      const link = document.createElement("a");
+      const url = URL.createObjectURL(blob);
+      link.href = url;
+      console.log(link.href)
+      link.download = "template.png";
+      link.click();
+      URL.revokeObjectURL(url);
+    }, "image/png");
   };
 
   return (
