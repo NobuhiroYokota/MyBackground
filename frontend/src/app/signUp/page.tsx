@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 
-const Signup = () => {
+const SignUp = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
@@ -69,6 +70,11 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      <Link href="/" className="absolute top-4 left-4 z-10">
+        <Button variant="outline" className="text-sm px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-all duration-300 ease-in-out">
+          ← Back to Home
+        </Button>
+      </Link>
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 left-10 w-40 h-40 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
         <div className="absolute top-0 right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
@@ -157,4 +163,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default SignUp
