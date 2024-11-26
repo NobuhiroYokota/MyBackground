@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
-export default function Signup() {
+const Signup = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
@@ -157,3 +157,4 @@ export default function Signup() {
   )
 }
 
+export default Signup
