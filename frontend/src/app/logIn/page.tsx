@@ -12,8 +12,6 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically handle the login logic
-    // For now, we'll just set a message
     setMessage('Login functionality not implemented yet')
   }
 
