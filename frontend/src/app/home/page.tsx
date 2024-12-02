@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useFormContext } from "../../lib/FormProvider";
 import { useState } from "react";
 
-export default function Home() {
+const Home = () => {
   const {
     jpName,
     setJpName,
@@ -84,3 +84,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home

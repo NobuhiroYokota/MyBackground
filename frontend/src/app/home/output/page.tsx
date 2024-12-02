@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useFormContext } from '../../../lib/FormProvider';
 import Link from 'next/link';
 
-export default function Output() {
+const Output = () => {
   const [resUrl, setResUrl] = useState("");
   const { jpName, engName, facultyName, departmentName, graduationYear, id } = useFormContext();
   const canvasRef = useRef(null);
@@ -80,3 +80,5 @@ export default function Output() {
     </div>
   );
 }
+
+export default Output
