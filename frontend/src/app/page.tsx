@@ -21,7 +21,7 @@ export default function LandingPage() {
             <Link href="/signup">Create Account <ArrowRight className="ml-2 h-5 w-5" /></Link>
           </Button>
           <Button variant="outline" asChild className="text-lg px-6 py-3 rounded-full border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-50 transition-all duration-300 ease-in-out">
-            <Link href="/logIn">Login</Link>
+            <Link href="/login">Login</Link>
           </Button>
         </div>
       </main>

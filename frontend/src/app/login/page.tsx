@@ -19,7 +19,7 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center p-4 relative overflow-hidden">
       <Link href="/" className="absolute top-4 left-4 z-10">
         <Button variant="outline" className="text-sm px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-all duration-300 ease-in-out">
-          ← Back to Home
+          ← Back
         </Button>
       </Link>
       <div className="absolute inset-0 opacity-20">
@@ -59,14 +59,11 @@ const Login = () => {
         {message && <p className="mt-4 text-center text-green-500">{message}</p>}
         <p className="mt-4 text-sm text-gray-600">
           Don't have an account?{' '}
-          <Link href="/signUp" className="text-indigo-600 hover:text-indigo-500">
+          <Link href="/signup" className="text-indigo-600 hover:text-indigo-500">
             Sign up
           </Link>
         </p>
       </main>
-      <footer className="mt-8 text-gray-600">
-        © 2023 MybackGround. All rights reserved.
-      </footer>
     </div>
   )
 }
